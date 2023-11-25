@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "monolith_part=base": {
+      "model": "ganju:block/monolith/monolith_base"
+    },
+    "monolith_part=middle": {
+      "model": "ganju:block/monolith/monolith_middle"
+    },
+    "monolith_part=top": {
+      "model": "ganju:block/monolith/monolith_top"
+    }
+  }
+}
