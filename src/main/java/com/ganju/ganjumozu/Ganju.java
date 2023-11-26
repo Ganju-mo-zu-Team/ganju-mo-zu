@@ -1,5 +1,6 @@
 package com.ganju.ganjumozu;
 
+import com.ganju.ganjumozu.registries.GanjuBlockEntityTypes;
 import com.ganju.ganjumozu.registries.GanjuBlocks;
 import com.ganju.ganjumozu.registries.GanjuItems;
 import com.ganju.ganjumozu.registries.GanjuTab;
@@ -46,6 +47,7 @@ public class Ganju {
         GanjuItems.ITEMS.register(modEventBus);
         GanjuBlocks.BLOCKS.register(modEventBus);
         GanjuTab.CREATIVE_MODE_TABS.register(modEventBus);
+        GanjuBlockEntityTypes.BLOCK_ENTITIES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 

@@ -21,7 +21,7 @@ public class GanjuBlocks {
             () -> new MonolithBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
     private static RegistryObject<Block> registerBlockAndItem(String name, Supplier<Block> block) {
-        RegistryObject<Block> toReturn = BLOCKS.register(name, block);
+        RegistryObject<Block> toReturn = registerBlock(name, block);
         registerItemFromBlock(name, toReturn);
         return toReturn;
     }

@@ -1,13 +1,22 @@
 {
   "variants": {
-    "monolith_part=base": {
+    "monolith_part=base,charged=false": {
       "model": "ganju:block/monolith/monolith_base"
     },
-    "monolith_part=middle": {
+    "monolith_part=middle,charged=false": {
       "model": "ganju:block/monolith/monolith_middle"
     },
-    "monolith_part=top": {
+    "monolith_part=top,charged=false": {
       "model": "ganju:block/monolith/monolith_top"
+    },
+    "monolith_part=base,charged=true": {
+      "model": "ganju:block/monolith/monolith_base_charged"
+    },
+    "monolith_part=middle,charged=true": {
+      "model": "ganju:block/monolith/monolith_middle_charged"
+    },
+    "monolith_part=top,charged=true": {
+      "model": "ganju:block/monolith/monolith_top_charged"
     }
   }
 }

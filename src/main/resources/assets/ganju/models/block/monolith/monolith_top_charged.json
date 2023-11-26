@@ -1,0 +1,30 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"4": "ganju:block/monolith/monolith_top_charged",
+		"particle": "polished_tuff"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 3],
+			"to": [14, 16, 13],
+			"faces": {
+				"north": {"uv": [0, 0, 3, 4], "texture": "#4"},
+				"east": {"uv": [0, 4, 2.5, 8], "texture": "#4"},
+				"south": {"uv": [3, 0, 6, 4], "texture": "#4"},
+				"west": {"uv": [2.5, 4, 5, 8], "texture": "#4"},
+				"up": {"uv": [8, 6.5, 5, 4], "texture": "#4"},
+				"down": {"uv": [9, 0, 6, 2.5], "texture": "#4"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "main",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}
