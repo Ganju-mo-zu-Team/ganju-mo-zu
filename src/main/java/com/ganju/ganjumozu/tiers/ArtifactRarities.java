@@ -1,5 +1,6 @@
-package com.ganju.ganjumozu.api.items;
+package com.ganju.ganjumozu.tiers;
 
+import com.ganju.ganjumozu.api.items.ArtifactRarity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 

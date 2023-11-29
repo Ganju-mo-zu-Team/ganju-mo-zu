@@ -2,7 +2,7 @@ package com.ganju.ganjumozu.registries;
 
 import com.ganju.ganjumozu.Ganju;
 import com.ganju.ganjumozu.api.items.ArtifactItem;
-import com.ganju.ganjumozu.api.items.ArtifactRarities;
+import com.ganju.ganjumozu.tiers.ArtifactRarities;
 import com.ganju.ganjumozu.registries.items.BambootanaItem;
 import com.ganju.ganjumozu.registries.items.TraineeStaffItem;
 import net.minecraft.network.chat.Component;

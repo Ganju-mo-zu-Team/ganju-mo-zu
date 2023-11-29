@@ -1,5 +1,6 @@
-package com.ganju.ganjumozu.registries;
+package com.ganju.ganjumozu.tiers;
 
+import com.ganju.ganjumozu.api.items.GanjuTier;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
@@ -7,9 +8,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Supplier;
 
-public enum GanjuTiers implements Tier {
-    BAMBOO(0, 59, 2.0F, 0.0F, 15, () -> Ingredient.of(Items.IRON_INGOT));
+public enum GanjuTiers implements GanjuTier {
+    BAMBOO("bamboo", 0, 59, 2.0F, 0.0F, 15, () -> Ingredient.of(Items.IRON_INGOT));
 
+    private final String name;
     private final int level;
     private final int uses;
     private final float speed;
@@ -17,13 +19,19 @@ public enum GanjuTiers implements Tier {
     private final int enchantmentValue;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    GanjuTiers(int level, int uses, float speed, float damage, int enchantmentValue, Supplier<Ingredient> ingredientSupplier) {
+    GanjuTiers(String name, int level, int uses, float speed, float damage, int enchantmentValue, Supplier<Ingredient> ingredientSupplier) {
         this.level = level;
         this.uses = uses;
         this.speed = speed;
         this.damage = damage;
         this.enchantmentValue = enchantmentValue;
+        this.name = name;
         this.repairIngredient = new LazyLoadedValue<>(ingredientSupplier);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public int getUses() {
