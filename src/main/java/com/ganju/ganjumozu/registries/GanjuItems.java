@@ -2,12 +2,17 @@ package com.ganju.ganjumozu.registries;
 
 import com.ganju.ganjumozu.Ganju;
 import com.ganju.ganjumozu.api.items.ArtifactItem;
+import com.ganju.ganjumozu.registries.blocks.MonolithBlock;
+import com.ganju.ganjumozu.registries.items.MonolithItem;
 import com.ganju.ganjumozu.tiers.ArtifactRarities;
 import com.ganju.ganjumozu.registries.items.BambootanaItem;
 import com.ganju.ganjumozu.registries.items.TraineeStaffItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -23,4 +28,6 @@ public class GanjuItems {
             new BambootanaItem(new Item.Properties()));
     public static final RegistryObject<Item> TRAINEE_STAFF = ITEMS.register("trainee_staff", () ->
             new TraineeStaffItem(new Item.Properties()));
+    public static final RegistryObject<Item> MONOLITH = ITEMS.register("monolith",
+            () -> new MonolithItem(GanjuBlocks.MONOLITH.get(), new Item.Properties()));
 }

@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public class GanjuBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Ganju.MODID);
-    public static final RegistryObject<Block> MONOLITH = registerBlockAndItem("monolith",
+    public static final RegistryObject<Block> MONOLITH = registerBlock("monolith",
             () -> new MonolithBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
 
     private static RegistryObject<Block> registerBlockAndItem(String name, Supplier<Block> block) {

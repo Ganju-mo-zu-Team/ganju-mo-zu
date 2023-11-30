@@ -3,6 +3,8 @@ package com.ganju.ganjumozu.registries.blocks;
 import com.ganju.ganjumozu.Ganju;
 import com.ganju.ganjumozu.capabilities.GanjuCapabilities;
 import com.ganju.ganjumozu.capabilities.ILuoto;
+import com.ganju.ganjumozu.network.GanjuPackets;
+import com.ganju.ganjumozu.network.packets.S2CLoutoSync;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -21,6 +23,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -28,6 +31,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -83,6 +87,18 @@ public class MonolithBlock extends Block {
     }
 
     @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        BlockPos basePos = getBaseBlockPos(state, pos);
+        for (int i = 0; i < 3; i++) {
+            BlockPos offsetPos = basePos.offset(0, i, 0);
+            if (!offsetPos.equals(pos)) {
+                level.destroyBlock(offsetPos, true, player);
+            }
+        }
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_49915_) {
         p_49915_.add(MONOLITH_PART, CHARGED, FACING, ACTIVATED);
     }
@@ -90,9 +106,7 @@ public class MonolithBlock extends Block {
     @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult p_60508_) {
         ILuoto playerLouto = player.getCapability(GanjuCapabilities.LUOTO).orElseThrow(NullPointerException::new);
-        Ganju.LOGGER.info("Unlocked luoto: "+playerLouto.hasUnlockedLouto());
-        // todo sync between client and server
-        if (!playerLouto.hasUnlockedLouto()) {
+        if (!playerLouto.hasUnlockedLouto() && !level.isClientSide) {
             if (player.getItemInHand(interactionHand).is(Items.EMERALD) && hasUnchargedPart(blockState, level, blockPos)) {
                 chargeObelisk(blockState, level, blockPos);
                 if (!player.isCreative()) {
@@ -109,6 +123,7 @@ public class MonolithBlock extends Block {
                         .append(Component.literal("Louto")
                                 .withStyle(ChatFormatting.BLUE)), true);
                 playerLouto.unlockLouto();
+                GanjuPackets.sendToClients(new S2CLoutoSync());
                 return InteractionResult.SUCCESS;
             }
         }

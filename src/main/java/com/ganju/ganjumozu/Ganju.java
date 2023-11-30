@@ -1,5 +1,6 @@
 package com.ganju.ganjumozu;
 
+import com.ganju.ganjumozu.network.GanjuPackets;
 import com.ganju.ganjumozu.registries.GanjuBlockEntityTypes;
 import com.ganju.ganjumozu.registries.GanjuBlocks;
 import com.ganju.ganjumozu.registries.GanjuItems;
@@ -55,12 +56,7 @@ public class Ganju {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("HELLO FROM COMMON SETUP");
-
-        if (GanjuConfig.logDirtBlock)
-            LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
-        LOGGER.info(GanjuConfig.magicNumberIntroduction + GanjuConfig.magicNumber);
+        event.enqueueWork(GanjuPackets::register);
 
         GanjuConfig.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
