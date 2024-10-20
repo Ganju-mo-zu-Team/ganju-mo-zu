@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "ganju:block/paper_wall",
+    "pane": "ganju:block/paper_wall"
+  }
+}

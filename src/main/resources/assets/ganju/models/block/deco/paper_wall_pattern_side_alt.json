@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side_alt",
+  "textures": {
+    "edge": "ganju:block/paper_wall_pattern",
+    "pane": "ganju:block/paper_wall_pattern"
+  }
+}
