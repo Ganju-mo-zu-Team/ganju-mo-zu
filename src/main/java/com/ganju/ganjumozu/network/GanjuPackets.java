@@ -1,6 +1,7 @@
 package com.ganju.ganjumozu.network;
 
 import com.ganju.ganjumozu.Ganju;
+import com.ganju.ganjumozu.network.packets.C2SLetterNBTSync;
 import com.ganju.ganjumozu.network.packets.S2CLoutoSync;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
@@ -30,6 +31,12 @@ public class GanjuPackets {
                 .decoder(S2CLoutoSync::new)
                 .encoder(S2CLoutoSync::toBytes)
                 .consumerMainThread(S2CLoutoSync::handle)
+                .add();
+
+        net.messageBuilder(C2SLetterNBTSync.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(C2SLetterNBTSync::new)
+                .encoder(C2SLetterNBTSync::toBytes)
+                .consumerMainThread(C2SLetterNBTSync::handle)
                 .add();
 
         Ganju.LOGGER.info("registering packets");

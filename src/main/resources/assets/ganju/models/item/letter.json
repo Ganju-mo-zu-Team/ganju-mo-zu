@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "ganju:item/letter",
+      "predicate": {
+        "ganju:open": 0.0
+      }
+    },
+    {
+      "model": "ganju:item/letter_open",
+      "predicate": {
+        "ganju:open": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "ganju:item/letter"
+  }
+}

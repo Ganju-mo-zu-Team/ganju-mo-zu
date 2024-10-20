@@ -16,9 +16,14 @@ public class GanjuTab {
             .icon(() -> GanjuItems.TRAINEE_STAFF.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(GanjuItems.ARTIFACT.get());
+                output.accept(GanjuItems.CRACKED_POT.get());
                 output.accept(GanjuItems.TRAINEE_STAFF.get());
+                output.accept(GanjuItems.LETTER.get());
                 output.accept(GanjuItems.BAMBOOTANA.get());
                 output.accept(GanjuBlocks.MONOLITH.get());
+                output.accept(GanjuBlocks.PAPER_WALL.get());
+                output.accept(GanjuBlocks.PAPER_WALL_DESIGN.get());
+                output.accept(GanjuBlocks.PAPER_WALL_PATTERN.get());
             }).build());
 
 }
